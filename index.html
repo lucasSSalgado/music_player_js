@@ -12,23 +12,23 @@
 
     <title>Music Players - ASMRProg</title>
 </head>
-<body>
-
+<body onload="loadMusic()">
     <div id="background">
-        	<img id="bg-img" src="assets/2.jpg" >
+        	<img id="bg-img" src="" >
     </div>
-
     <main>
         <div id="bg-album">
-            <img id="album" src="assets/2.jpg" alt="Album IMG">
+            <img id="album" src="" alt="Album IMG">
         </div> 
         <div id="container-info">
             <div id="info">
-                <h1 id="title">You Will Never See Me Coming</h1>
-                <h3 id="artist">NEFFEX</h3>
+                <h1 id="title"></h1>
+                <h3 id="artist"></h3>
             </div>
             <div id="music-bar">
-                <div id="bar-player"></div>
+                <div id="bar-player">
+                    <div id="bar_progress"></div>
+                </div>
                 <div id="buttons">
                     <i id="backward" class="fa-solid fa-backward"></i>
                     <i id="play" class="fa-solid fa-play"></i>

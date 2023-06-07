@@ -58,7 +58,8 @@ main {
     font-size: 20px;
 }
 #artist {
-    margin-top: 0.5;
+    margin-top: 0.7;
+    font-size: 16px;
 }
 #music-bar {
     flex: 1;
@@ -71,11 +72,21 @@ main {
     background: white;
     margin: auto;
 }
+#bar_progress {
+    width: 290px;
+    border-radius: 10px;
+    height: 5px;
+    background: black;
+}
 #corrent-time {
     margin-top: 5rem;
 }
 #buttons {
     margin-top: 15px;
+}
+.c {
+    height: 5px;
+    background-color: black;
 }
 .fa-backward {
     font-size: 30px;

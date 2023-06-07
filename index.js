@@ -4,12 +4,17 @@ const btnPlay = document.getElementById('play'),
     bg_img = document.getElementById('bg-img'),
     album_img = document.getElementById('album'),
     title = document.getElementById('title'),
-    artist = document.getElementById('artist')
+    artist = document.getElementById('artist'),
+    bar_player = document.getElementById('bar-player'),
+    bar_progress = document.getElementById('bar_progress')
 
+
+const music = new Audio()
 
 btnPlay.addEventListener('click', () => clickPlay())
 btnBackward.addEventListener('click', () => backward())
 btnForward.addEventListener('click', () => forward())
+music.addEventListener('timeupdate', updateProgressBar);
 
 const songs = [
     {
@@ -32,34 +37,33 @@ const songs = [
     }
 ]
 
-const music = new Audio();
-
 let isPlaying = false
 let index = 0
+let actualTime = 0
 
+function updateProgressBar() {
+    const { duration, currentTime } = music
+    const progressPercent = (currentTime / duration) * 100
+    bar_progress.style.width = `${progressPercent}%`
+    bar_progress.className = 'progress-actual'
+}
 function backward() {
-    console.log('backward')
     index--
     loadMusic()
     playMusic()
 }
-
 function forward() {
-    console.log('backward')
     index++
     loadMusic()
     playMusic()
 }
-
 function loadMusic() {
     music.src = songs[index].path
     bg_img.src = songs[index].cover
     album_img.src = songs[index].cover
-    title.src = songs[index].displayName
-    artist.src = songs[index].artist
-    console.log('loadMusic')
+    title.innerText = songs[index].displayName
+    artist.innerText = songs[index].artist
 }
-
 function clickPlay() {
     if (isPlaying) {
         pauseMusic()
@@ -67,23 +71,15 @@ function clickPlay() {
     else {
         playMusic()
     }
-
-    console.log('clickPlay')
 }
-
 function playMusic() {
     loadMusic()
     music.play()
     btnPlay.className = 'fa-solid fa-pause'
     isPlaying = true
-    console.log('playMusic')
 }
-
 function pauseMusic() {
     music.pause()
     btnPlay.className = 'fa-solid fa-play'
     isPlaying = false
-
-    console.log('pauseMusic')
 }
-
